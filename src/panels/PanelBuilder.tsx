@@ -1,22 +1,26 @@
 import { memo, useMemo, useCallback } from "react";
 
 import 'reactflow/dist/style.css';
-import ReactFlow, { Background, Controls, useNodesState, useEdgesState, addEdge, type Connection, type Node, type Edge } from "reactflow";
+import ReactFlow, {
+    Background, Controls, useNodesState, useEdgesState, addEdge,
+    type Connection, type Node, type Edge, useReactFlow
+} from "reactflow";
 import NodeMessage from "../nodes/NodeMessage";
 
 import { useAppDispatch } from "../redux/hookStore";
 import { setSelectedEdge, clearSelectedEdge } from "../redux/sliceSelectedEdge";
 import { setSelectedNode, clearSelectedNode } from "../redux/sliceSelectedNode";
 
+
 function PanelBuilder() {
     const dispatch = useAppDispatch();
+    const { screenToFlowPosition } = useReactFlow();
+    const [nodes, setNodes, onNodeChange] = useNodesState([]);
+    const [edges, setEdges, onEdgeChange] = useEdgesState([]);
 
     const nodeTypes = useMemo(() => ({
         Message: NodeMessage,
     }), []);
-
-    const [nodes, _setNodes, onNodeChange] = useNodesState([]);
-    const [edges, setEdges, onEdgeChange] = useEdgesState([]);
 
     const onNodeClick = useCallback((_event: any, node: Node) => {
         dispatch(setSelectedNode({ node }));
@@ -50,6 +54,30 @@ function PanelBuilder() {
         [setEdges]
     );
 
+    const onDragOver = useCallback((event: React.DragEvent) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+    }, []);
+
+    const onDrop = useCallback((event: React.DragEvent) => {
+        event.preventDefault();
+
+        const type = event.dataTransfer.getData('application/reactflow');
+        if (!type) return;
+
+        const position = screenToFlowPosition({ x: event.clientX, y: event.clientY });
+        const id = `${new Date().getTime()}`;
+
+        const newNode: Node = {
+            id,
+            type,
+            position,
+            data: { id, message: '' },
+        };
+
+        setNodes((prev) => [...prev, newNode]);
+    }, [screenToFlowPosition, setNodes]);
+
     return (
         <div className="flex-1 p-4 overflow-auto">
             <ReactFlow
@@ -63,6 +91,8 @@ function PanelBuilder() {
                 onNodeClick={onNodeClick}
                 onPaneClick={onPaneClick}
                 onEdgeClick={onEdgeClick}
+                onDrop={onDrop}
+                onDragOver={onDragOver}
             >
                 <Background />
                 <Controls />
