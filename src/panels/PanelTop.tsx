@@ -9,6 +9,12 @@ function PanelTop() {
     const msgTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
     const disableTime = 3000;
 
+    const colorStyles: Record<string, string> = {
+        red: "bg-red-200 text-red-800 border-red-800",
+        green: "bg-green-200 text-green-800 border-green-800",
+        black: "bg-gray-300 text-black border-gray-500",
+    };
+
     function ShowMsg(msg: string, color?: string) {
         setMsg(msg);
         setMsgColor(color || 'black');
@@ -23,10 +29,10 @@ function PanelTop() {
         const nodes = getNodes();
         const edges = getEdges();
 
-        if (nodes.length < 1) {
-            ShowMsg("Nodes not present", "red");
-            return;
-        }
+        // if (nodes.length < 1) {
+        //     ShowMsg("Panel is empty", "red");
+        //     return;
+        // }
 
         let nodesWithEmptyTarget = 0;
 
@@ -54,7 +60,7 @@ function PanelTop() {
                     className={`
                         absolute left-1/2 transform -translate-x-1/2 
                         px-4 py-2 rounded shadow text-sm font-medium border 
-                        bg-${msgColor}-200 text-${msgColor}-800 border-${msgColor}-800`}>
+                        ${colorStyles[msgColor] || colorStyles.black}`}>
                     {msg}
                 </div>
             )}

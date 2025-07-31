@@ -38,6 +38,9 @@ function InfoMessage() {
         if (selectedNode?.node?.data?.message) {
             setText(selectedNode.node.data.message);
         }
+        else {
+            setText("");
+        }
     }, [selectedNode]);
 
     if (!selectedNode || !selectedNode.node) return null;
