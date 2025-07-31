@@ -7,6 +7,10 @@ A visual flow builder built with **React Flow**, **Tailwind CSS**, **Redux**, an
 
 ---
 
+## 📸 Preview
+
+![FlowBuilder Screenshot](https://raw.githubusercontent.com/DhirajKarangale/FlowBuilder/main/public/FlowBuilderDemo.png)
+
 ---
 
 ## ✨ Features
