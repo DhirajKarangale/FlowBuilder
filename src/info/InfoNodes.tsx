@@ -14,7 +14,7 @@ function InfoNodes() {
                 id: `${id}`,
                 data: { message: '', id: `${id}` },
                 type: type,
-                position: { x: 0, y: 0 }
+                position: { x: 50, y: 30 }
             }
         ]);
     }
