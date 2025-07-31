@@ -1,6 +1,6 @@
 # 💬 FlowBuilder
 
-A visual chatbot flow builder built with **React Flow**, **Tailwind CSS**, **Redux**, and **TypeScript**. Create, customize, and manage chatbot message flows with a modern drag-and-drop interface.
+A visual flow builder built with **React Flow**, **Tailwind CSS**, **Redux**, and **TypeScript**. Create, customize, and manage message flows with a modern drag-and-drop interface.
 
 🚀 **Live Demo**: [flow-builder-tau.vercel.app](https://flow-builder-tau.vercel.app/)  
 📦 **GitHub Repo**: [github.com/DhirajKarangale/FlowBuilder](https://github.com/DhirajKarangale/FlowBuilder)
@@ -11,7 +11,7 @@ A visual chatbot flow builder built with **React Flow**, **Tailwind CSS**, **Red
 
 ## ✨ Features
 
-- 🔘 **Drag-and-drop** interface for building chatbot message flows
+- 🔘 **Drag-and-drop** interface for building message flows
 - 💬 **MessageNode**: Add, edit, and connect message blocks
 - ➕ **Node Palette**: Click or drag nodes from sidebar to builder area
 - 📝 **Editable Node Content**: Select a node to edit its message in the side panel
