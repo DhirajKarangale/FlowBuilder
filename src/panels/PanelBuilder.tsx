@@ -1,4 +1,4 @@
-import { memo, useMemo, useCallback } from "react";
+import { memo, useEffect, useMemo, useCallback } from "react";
 
 import 'reactflow/dist/style.css';
 import ReactFlow, {
@@ -77,6 +77,22 @@ function PanelBuilder() {
 
         setNodes((prev) => [...prev, newNode]);
     }, [screenToFlowPosition, setNodes]);
+
+    useEffect(() => {
+        const savedNodes = localStorage.getItem("flow-nodes");
+        const savedEdges = localStorage.getItem("flow-edges");
+
+        if (savedNodes && savedEdges) {
+            try {
+                const parsedNodes = JSON.parse(savedNodes);
+                const parsedEdges = JSON.parse(savedEdges);
+                setNodes(parsedNodes);
+                setEdges(parsedEdges);
+            } catch (err) {
+                console.error("Failed to load flow from localStorage:", err);
+            }
+        }
+    }, [setNodes, setEdges]);
 
     return (
         <div className="flex-1 p-4 overflow-auto">
