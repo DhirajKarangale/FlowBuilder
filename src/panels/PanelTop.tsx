@@ -1,4 +1,4 @@
-import { memo, useState, useRef } from "react";
+import { memo, useState, useEffect, useRef } from "react";
 import { useReactFlow } from "reactflow";
 
 function PanelTop() {
@@ -52,6 +52,20 @@ function PanelTop() {
         localStorage.setItem("flow-edges", JSON.stringify(edges));
         ShowMsg("Saved Successfully", "green");
     }
+
+    useEffect(() => {
+        function KeyDown(e: KeyboardEvent) {
+            const isMac = navigator.userAgent.toUpperCase().indexOf('MAC') >= 0;
+            const isSaveShortcut = (isMac && e.metaKey) || (!isMac && e.ctrlKey);
+            if (isSaveShortcut && e.key.toLowerCase() === 's') {
+                e.preventDefault();
+                Save();
+            }
+        }
+
+        window.addEventListener('keydown', KeyDown);
+        return () => window.removeEventListener('keydown', KeyDown);
+    }, []);
 
     return (
         <div className="bg-gray-200 px-4 py-2 flex justify-end items-center">
