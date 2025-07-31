@@ -81,7 +81,7 @@ function PanelBuilder() {
     return (
         <div className="flex-1 p-4 overflow-auto">
             <ReactFlow
-                fitView
+                // fitView
                 nodes={nodes}
                 edges={edges}
                 onNodesChange={onNodeChange}
