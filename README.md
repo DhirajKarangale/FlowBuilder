@@ -1,69 +1,50 @@
-# React + TypeScript + Vite
+# 💬 FlowBuilder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A visual flow builder built with **React Flow**, **Tailwind CSS**, **Redux**, and **TypeScript**. Create, customize, and manage message flows with a modern drag-and-drop interface.
 
-Currently, two official plugins are available:
+🚀 **Live Demo**: [flow-builder-tau.vercel.app](https://flow-builder-tau.vercel.app/)  
+📦 **GitHub Repo**: [github.com/DhirajKarangale/FlowBuilder](https://github.com/DhirajKarangale/FlowBuilder)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Features
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 🔘 **Drag-and-drop** interface for building message flows
+- 💬 **MessageNode**: Add, edit, and connect message blocks
+- ➕ **Node Palette**: Click or drag nodes from sidebar to builder area
+- 📝 **Editable Node Content**: Select a node to edit its message in the side panel
+- 🔗 **Connections**: One **source handle** per node (outgoing), multiple **target handles** (incoming)
+- ⌨️ **Keyboard Shortcuts**:
+  - `Delete`: Remove selected node or edge
+  - `Ctrl/Cmd + S`: Save flow to local storage
+- 💾 **Auto-Persisted State**: Load saved flows on refresh
+- ⚠️ **Validation**: Error shown when more than one node has an empty target connection
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **React + TypeScript**
+- **React Flow**
+- **Redux Toolkit**
+- **Tailwind CSS**
+- **Vite**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📦 Installation & Usage
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/DhirajKarangale/FlowBuilder.git
+
+# 2. Navigate to the project folder
+cd FlowBuilder
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
+npm run dev
